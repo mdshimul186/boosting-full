@@ -6,7 +6,7 @@ const keys = require("./server/config/keys");
 const stripe = require('stripe')(keys.stripeSecretKey);
 const mailer = require('./mailer');
 const mongoose = require("mongoose");
-
+const cors = require("cors");
 const dev = process.env.NODE_ENV !== 'production';
 //cloudinary config
 const cloudinary = require('cloudinary').v2;
@@ -52,7 +52,7 @@ app.prepare().then(() => {
     }));
 
     server.use(bodyParser.json());
-
+    server.use(cors());
     
 
 
